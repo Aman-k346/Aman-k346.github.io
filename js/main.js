@@ -261,34 +261,33 @@ contactForm.addEventListener("submit", (e) => {
   let Demail = contactEmail.value;
   let Dsubject = contactSubject.value;
   let Dmessage = contactMessage.value;
-
-  fetch(
-    "https://discord.com/api/webhooks/1072151089761239060/j5Cuk0ajjn2fnehyi9wbIcOMxsfIv47C7iE5iYzuGcn4oe7lSOzB1zpxjbVTh0g6FrWK",
-    {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        content: "new job <@844586518092840992>",
-        embeds: [
-          {
-            title: Dname,
-            description: Dmessage,
-            color: null,
-            fields: [
-              {
-                name: "Email",
-                value: Demail,
-              },
-              {
-                name: "Subject",
-                value: Dsubject,
-              },
-            ],
-          },
-        ],
-      }),
-    }
-  );
+  let channel = "1047855005111164928";
+  let token =
+    "bArSb9ehQNrCVoCZlAhS5nr1Ft3z8CmCpc29rxJx9Ul3vLVb8yZP1BpZmsJHIpLJiKtH";
+  fetch("https://discord.com/api/webhooks/"+channel+"/"+token, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      content: "new job <@844586518092840992>",
+      embeds: [
+        {
+          title: Dname,
+          description: Dmessage,
+          color: null,
+          fields: [
+            {
+              name: "Email",
+              value: Demail,
+            },
+            {
+              name: "Subject",
+              value: Dsubject,
+            },
+          ],
+        },
+      ],
+    }),
+  });
 });
