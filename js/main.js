@@ -40,7 +40,7 @@
     itemsCustom: [
       [0, 1],
       [700, 2],
-      [960, 3],
+      // [960, 3],
     ],
     navigationText: false,
   });
@@ -186,47 +186,7 @@
 	------------------------------------------------------ */
   $("input, textarea, select").placeholder();
 
-  /*---------------------------------------------------- */
-  /*	contact form
-	------------------------------------------------------ */
-
-  /* local validation */
-  $("#contactForm").validate({
-    /* submit via ajax */
-    submitHandler: function (form) {
-      var sLoader = $("#submit-loader");
-
-      $.ajax({
-        type: "POST",
-        url: "inc/sendEmail.php",
-        data: $(form).serialize(),
-        beforeSend: function () {
-          sLoader.fadeIn();
-        },
-        success: function (msg) {
-          // Message was sent
-          if (msg == "OK") {
-            sLoader.fadeOut();
-            $("#message-warning").hide();
-            $("#contactForm").fadeOut();
-            $("#message-success").fadeIn();
-          }
-          // There was an error
-          else {
-            sLoader.fadeOut();
-            $("#message-warning").html(msg);
-            $("#message-warning").fadeIn();
-          }
-        },
-        error: function () {
-          sLoader.fadeOut();
-          $("#message-warning").html("Something went wrong. Please try again.");
-          $("#message-warning").fadeIn();
-        },
-      });
-    },
-  });
-
+  
   /*----------------------------------------------------- */
   /* Back to top
    ------------------------------------------------------- */
@@ -247,47 +207,3 @@
   });
 })(jQuery);
 
-// Retrieve form data and send a fetch request
-
-contactForm.addEventListener("submit", (e) => {
-  e.preventDefault();
-
-  const contactForm = document.querySelector("#contactForm");
-  const contactName = document.querySelector("#contactName");
-  const contactEmail = document.querySelector("#contactEmail");
-  const contactSubject = document.querySelector("#contactSubject");
-  const contactMessage = document.querySelector("#contactMessage");
-  let Dname = contactName.value;
-  let Demail = contactEmail.value;
-  let Dsubject = contactSubject.value;
-  let Dmessage = contactMessage.value;
-  let channel = "1047855005111164928";
-  let token =
-    "bArSb9ehQNrCVoCZlAhS5nr1Ft3z8CmCpc29rxJx9Ul3vLVb8yZP1BpZmsJHIpLJiKtH";
-  fetch("https://discord.com/api/webhooks/"+channel+"/"+token, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      content: "new job <@844586518092840992>",
-      embeds: [
-        {
-          title: Dname,
-          description: Dmessage,
-          color: null,
-          fields: [
-            {
-              name: "Email",
-              value: Demail,
-            },
-            {
-              name: "Subject",
-              value: Dsubject,
-            },
-          ],
-        },
-      ],
-    }),
-  });
-});

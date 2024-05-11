@@ -1,32 +1,4 @@
-/**
- * =================================================================== 
- *
- *  Aman v1.0 Main Stylesheet
- *  url: styleshout.com
- *  03-01-2016
- *  ------------------------------------------------------------------
- *  TOC:
- *  01. webfonts and iconfonts
- *  02. base style overrides
- *  03. typography & general theme styles
- *  04. preloader
- *  05. forms
- *  06. buttons 
- *  07. other components
- *  08. common styles
- *  09. header styles
- *  10. intro
- *  11. about
- *  12. resume
- *  13. portfolio
- *  14. call-to-action section
- *  15. services
- *  16. stats
- *  17. contact
- *  18. footer
- *
- * =================================================================== 
- */
+
 
 /** 
  * ===================================================================
@@ -1592,8 +1564,8 @@ header .logo a {
  */
 #about {
   background: #ffffff;
-  padding-top: 12rem;
-  padding-bottom: 15rem;
+  padding-top: 6rem;
+  padding-bottom: 0;
 }
 #about .section-intro {
   margin-bottom: 3rem;
@@ -1712,7 +1684,7 @@ header .logo a {
   }
   .intro-info .lead {
     padding-left: 0;
-    text-align: center;
+    /* text-align: center; */
   }
 }
 
@@ -1895,12 +1867,14 @@ header .logo a {
 #portfolio {
   background: #ffffff;
   padding-top: 12rem;
-  padding-bottom: 12rem;
+  padding-bottom: 6rem;
 }
 #portfolio .folio-item {
   padding: 0;
   position: relative;
   overflow: hidden;
+  border: 1px solid #000000;
+  border-radius: 2px;
 }
 #portfolio .folio-item img {
   vertical-align: middle;
